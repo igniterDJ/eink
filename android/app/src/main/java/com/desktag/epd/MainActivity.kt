@@ -67,6 +67,7 @@ class MainActivity : ComponentActivity(), NowPlayingService.Listener {
     private var previewBitmap: Bitmap? = null
 
     private var isConnected: Boolean = false
+    private var pendingSend: Boolean = false
 
     private var photoUri: Uri? = null
 
@@ -552,6 +553,10 @@ class MainActivity : ComponentActivity(), NowPlayingService.Listener {
         runOnUiThread {
             isConnected = connected
             updateUiState()
+            if (connected && pendingSend) {
+                pendingSend = false
+                sendProcessedFrame()
+            }
         }
     }
 
@@ -584,17 +589,22 @@ class MainActivity : ComponentActivity(), NowPlayingService.Listener {
     }
 
     private fun onSendClicked() {
-        val frame = processedFrame
-        if (!isConnected) {
-            Toast.makeText(this, "Not connected", Toast.LENGTH_SHORT).show()
-            return
-        }
-        if (frame == null) {
+        if (processedFrame == null) {
             Toast.makeText(this, "No image ready", Toast.LENGTH_SHORT).show()
             return
         }
+        if (!isConnected) {
+            pendingSend = true
+            txtStatus.text = "Connecting..."
+            nowPlayingService?.startScan()
+            return
+        }
+        sendProcessedFrame()
+    }
 
-        // Persist the preview so the next app launch shows what the display likely shows.
+    /** Persists the preview and sends processedFrame once a connection is confirmed. */
+    private fun sendProcessedFrame() {
+        val frame = processedFrame ?: return
         previewBitmap?.let { saveLastDisplayPreview(it) }
         nowPlayingService?.sendFrame(frame, asBackground = true)
     }
@@ -673,7 +683,7 @@ class MainActivity : ComponentActivity(), NowPlayingService.Listener {
     // ---------- UI state ----------
 
     private fun updateUiState() {
-        btnSend.isEnabled = isConnected && processedFrame != null
+        btnSend.isEnabled = processedFrame != null
         btnClearDisplay.isEnabled = isConnected
     }
 }
