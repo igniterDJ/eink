@@ -189,15 +189,13 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnNowPlayingStyle"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="52dp"
                     android:layout_marginStart="6dp"
-                    android:textSize="13sp"
                     app:cornerRadius="26dp"
-                    app:strokeColor="#8A97A8"
-                    android:textColor="#4B5A6E"
+                    app:backgroundTint="#DCE3EC"
+                    android:textColor="#1E2A3A"
                     android:text="Style" />
 
             </LinearLayout>

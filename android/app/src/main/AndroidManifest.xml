@@ -29,9 +29,9 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="EPD Keychain"
+        android:label="DeskTag"
         android:supportsRtl="true"
-        android:theme="@style/Theme.EpdKeychain">
+        android:theme="@style/Theme.DeskTag">
 
         <activity
             android:name=".MainActivity"

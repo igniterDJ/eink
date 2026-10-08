@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:background="#000000">
 
-    <com.keychain.epd.CropFrameView
+    <com.desktag.epd.CropFrameView
         android:id="@+id/cropFrameView"
         android:layout_width="match_parent"
         android:layout_height="0dp"

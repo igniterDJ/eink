@@ -14,5 +14,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "keychain"
+rootProject.name = "desktag"
 include(":app")

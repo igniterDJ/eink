@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.keychain.epd"
+    namespace = "com.desktag.epd"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.keychain.epd"
+        applicationId = "com.desktag.epd"
         minSdk = 26
         targetSdk = 35
         versionCode = 1

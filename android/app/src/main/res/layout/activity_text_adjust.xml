@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:background="#000000">
 
-    <com.keychain.epd.TextCanvasView
+    <com.desktag.epd.TextCanvasView
         android:id="@+id/textCanvasView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
