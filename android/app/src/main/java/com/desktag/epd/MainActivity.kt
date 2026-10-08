@@ -77,6 +77,7 @@ class MainActivity : ComponentActivity(), NowPlayingService.Listener {
     private val imageExecutor = Executors.newSingleThreadExecutor()
 
     private fun lastDisplayPreviewFile(): File = File(filesDir, "last_display.png")
+    private fun lastDisplayFrameFile(): File = File(filesDir, "last_display.frame")
 
     // ---------- Now Playing / BLE service ----------
     // BLE connection and Now Playing polling live in NowPlayingService (a foreground
@@ -308,15 +309,22 @@ class MainActivity : ComponentActivity(), NowPlayingService.Listener {
                 previewBitmap = bitmap
                 imgPreview.setImageBitmap(bitmap)
             }
+            // The preview alone isn't enough to re-send: restore the actual frame bytes
+            // too, so Send works again after the app/process was killed and relaunched.
+            val frameFile = lastDisplayFrameFile()
+            if (frameFile.exists()) {
+                processedFrame = frameFile.readBytes()
+            }
         } catch (_: Exception) {
         }
     }
 
-    private fun saveLastDisplayPreview(bitmap: Bitmap) {
+    private fun saveLastDisplayPreview(bitmap: Bitmap, frame: ByteArray) {
         try {
             FileOutputStream(lastDisplayPreviewFile()).use { out ->
                 bitmap.compress(Bitmap.CompressFormat.PNG, 100, out)
             }
+            lastDisplayFrameFile().writeBytes(frame)
         } catch (_: Exception) {
         }
     }
@@ -553,7 +561,12 @@ class MainActivity : ComponentActivity(), NowPlayingService.Listener {
         runOnUiThread {
             isConnected = connected
             updateUiState()
-            if (connected && pendingSend) {
+        }
+    }
+
+    override fun onReadyToSend() {
+        runOnUiThread {
+            if (pendingSend) {
                 pendingSend = false
                 sendProcessedFrame()
             }
@@ -605,7 +618,7 @@ class MainActivity : ComponentActivity(), NowPlayingService.Listener {
     /** Persists the preview and sends processedFrame once a connection is confirmed. */
     private fun sendProcessedFrame() {
         val frame = processedFrame ?: return
-        previewBitmap?.let { saveLastDisplayPreview(it) }
+        previewBitmap?.let { saveLastDisplayPreview(it, frame) }
         nowPlayingService?.sendFrame(frame, asBackground = true)
     }
 
@@ -618,6 +631,7 @@ class MainActivity : ComponentActivity(), NowPlayingService.Listener {
         // Clearing the display means we no longer have a meaningful "last display" preview.
         try {
             lastDisplayPreviewFile().delete()
+            lastDisplayFrameFile().delete()
         } catch (_: Exception) {
         }
         nowPlayingService?.clearDisplay()

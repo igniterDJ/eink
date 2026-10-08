@@ -55,6 +55,8 @@ class BleManager(
         fun onGattDisconnected()
         fun onTransferComplete()
         fun onTransferError(error: String)
+        /** Fired once notifications are enabled and sendFrame()/clearDisplay() will actually work. */
+        fun onReadyToSend()
     }
 
     private val bluetoothManager: BluetoothManager =
@@ -420,6 +422,7 @@ class BleManager(
                 if (status == BluetoothGatt.GATT_SUCCESS) {
                     cccdWriteComplete.set(true)
                     statusCallback.onStatus("STATUS notifications enabled")
+                    statusCallback.onReadyToSend()
                 } else {
                     statusCallback.onTransferError("CCCD write failed: $status")
                 }

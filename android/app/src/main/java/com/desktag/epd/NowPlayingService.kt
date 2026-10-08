@@ -43,6 +43,8 @@ class NowPlayingService : Service() {
         fun onNowPlayingFrame(bitmap: Bitmap, frame: ByteArray)
         fun onTransferComplete()
         fun onTransferError(error: String)
+        /** Fired once the connection is actually ready for sendFrame()/clearDisplay(), not just GATT-connected. */
+        fun onReadyToSend() {}
     }
 
     inner class LocalBinder : Binder() {
@@ -90,6 +92,10 @@ class NowPlayingService : Service() {
         override fun onGattDisconnected() {
             isConnected = false
             listener?.onConnectionChanged(false)
+        }
+
+        override fun onReadyToSend() {
+            listener?.onReadyToSend()
         }
 
         override fun onTransferComplete() {
