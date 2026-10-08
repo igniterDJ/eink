@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/txtDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#1E2A3A"
+            android:text="Mon, Jan 1" />
+
+        <EditText
+            android:id="@+id/edtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Event title"
+            android:inputType="textCapSentences"
+            android:maxLines="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#4B5A6E"
+            android:text="Time" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPickTime"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="8dp"
+            android:textSize="13sp"
+            app:cornerRadius="22dp"
+            app:strokeColor="#8A97A8"
+            android:textColor="#4B5A6E"
+            android:text="All day" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#4B5A6E"
+            android:text="Repeats" />
+
+        <RadioGroup
+            android:id="@+id/groupRecurrence"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioOneTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="One-time"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/radioYearly"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Every year" />
+
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#4B5A6E"
+            android:text="Category" />
+
+        <RadioGroup
+            android:id="@+id/groupCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/radioAnniversary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Anniversary"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/radioBirthday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Birthday" />
+
+            <RadioButton
+                android:id="@+id/radioFriends"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Friends" />
+
+            <RadioButton
+                android:id="@+id/radioHealth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Health" />
+
+            <RadioButton
+                android:id="@+id/radioTravel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Travel" />
+
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#4B5A6E"
+            android:text="Background" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#E3E7EC">
+
+            <ImageView
+                android:id="@+id/imgBackgroundPreview"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:scaleType="centerCrop"
+                android:contentDescription="Background preview for the selected category" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnNextImage"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="8dp"
+            android:textSize="13sp"
+            app:cornerRadius="22dp"
+            app:strokeColor="#8A97A8"
+            android:textColor="#4B5A6E"
+            android:text="Next image" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPreviewEvent"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="8dp"
+            android:textSize="13sp"
+            app:cornerRadius="22dp"
+            app:strokeColor="#2E6E82"
+            android:textColor="#2E6E82"
+            android:text="Preview on screen" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSaveEvent"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="24dp"
+            app:cornerRadius="26dp"
+            app:backgroundTint="#2E6E82"
+            android:textColor="#FFFFFF"
+            android:text="Save" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDeleteEvent"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="12dp"
+            android:visibility="gone"
+            app:cornerRadius="26dp"
+            app:strokeColor="#B3413B"
+            android:textColor="#B3413B"
+            android:text="Delete event" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCancelEvent"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="12dp"
+            app:cornerRadius="26dp"
+            app:strokeColor="#8A97A8"
+            android:textColor="#4B5A6E"
+            android:text="Cancel" />
+
+    </LinearLayout>
+
+</ScrollView>

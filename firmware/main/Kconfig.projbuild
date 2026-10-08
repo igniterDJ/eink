@@ -1,0 +1,45 @@
+menu "EPD Pin Configuration"
+
+config EPD_PIN_MOSI
+    int "MOSI (DIN) GPIO"
+    default 9
+    range 0 48
+    help
+        SPI MOSI (DIN) pin for the e-Paper display.
+
+config EPD_PIN_SCLK
+    int "SCLK (CLK) GPIO"
+    default 8
+    range 0 48
+    help
+        SPI SCLK (CLK) pin for the e-Paper display.
+
+config EPD_PIN_CS
+    int "CS GPIO"
+    default 7
+    range 0 48
+    help
+        SPI CS (chip select) pin for the e-Paper display.
+
+config EPD_PIN_DC
+    int "DC (data/command) GPIO"
+    default 5
+    range 0 48
+    help
+        DC (data/command) pin for the e-Paper display.
+
+config EPD_PIN_RST
+    int "RST (reset) GPIO"
+    default 4
+    range 0 48
+    help
+        RST (reset) pin for the e-Paper display.
+
+config EPD_PIN_BUSY
+    int "BUSY GPIO"
+    default 6
+    range 0 48
+    help
+        BUSY pin for the e-Paper display. Active HIGH.
+
+endmenu

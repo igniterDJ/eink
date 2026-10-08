@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="#EDF1F5"
+        android:paddingVertical="12dp"
+        android:paddingHorizontal="8dp">
+
+        <Button
+            android:id="@+id/btnPrevMonth"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#1E2A3A"
+            android:text="◀" />
+
+        <TextView
+            android:id="@+id/txtMonthYear"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#1E2A3A"
+            android:text="January 2026" />
+
+        <Button
+            android:id="@+id/btnNextMonth"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#1E2A3A"
+            android:text="▶" />
+
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnImportGoogleCalendar"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="10dp"
+        android:textSize="13sp"
+        app:cornerRadius="22dp"
+        app:strokeColor="#8A97A8"
+        android:textColor="#4B5A6E"
+        android:text="Import Google Calendar (1 year)" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnRemoveImportedGoogleCalendar"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="8dp"
+        android:textSize="13sp"
+        app:cornerRadius="22dp"
+        app:strokeColor="#B3413B"
+        android:textColor="#B3413B"
+        android:text="Remove imported Google events" />
+
+    <GridView
+        android:id="@+id/gridDays"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="7"
+        android:verticalSpacing="2dp"
+        android:horizontalSpacing="2dp"
+        android:padding="8dp"
+        android:gravity="center"
+        android:stretchMode="columnWidth" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#DCE3EC" />
+
+    <TextView
+        android:id="@+id/txtNoEvents"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:gravity="center"
+        android:textColor="#8A97A8"
+        android:text="No events on this day" />
+
+    <ListView
+        android:id="@+id/listEvents"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddEvent"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_margin="12dp"
+        app:cornerRadius="26dp"
+        app:backgroundTint="#2E6E82"
+        android:textColor="#FFFFFF"
+        android:text="+ Add event" />
+
+</LinearLayout>

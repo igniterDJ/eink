@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="#EDF1F5"
+        android:paddingVertical="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="E-Ink"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#1E2A3A" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:gravity="center_horizontal">
+
+            <!-- Preview: bezel matches the real 122x250 e-ink panel, not a square -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="#FFFFFF">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="14dp"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="#B7BFC9">
+
+                    <ImageView
+                        android:id="@+id/imgPreview"
+                        android:layout_width="287dp"
+                        android:layout_height="140dp"
+                        android:layout_margin="10dp"
+                        android:scaleType="fitCenter"
+                        android:background="#E3E7EC"
+                        android:contentDescription="Preview of the dithered image as it will appear on the display" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/txtStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="8dp"
+                android:background="@drawable/bg_status_pill"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#1F6B3A"
+                android:gravity="center"
+                android:text="Ready" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="24dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnTakePhoto"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="52dp"
+                    android:layout_marginEnd="6dp"
+                    app:cornerRadius="26dp"
+                    app:backgroundTint="#DCE3EC"
+                    android:textColor="#1E2A3A"
+                    android:text="Take Photo" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnUploadPhoto"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="6dp"
+                    app:cornerRadius="26dp"
+                    app:backgroundTint="#DCE3EC"
+                    android:textColor="#1E2A3A"
+                    android:text="Upload Photo" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAddText"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="52dp"
+                    android:layout_marginEnd="6dp"
+                    app:cornerRadius="26dp"
+                    app:backgroundTint="#DCE3EC"
+                    android:textColor="#1E2A3A"
+                    android:text="Add Text" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGallery"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="6dp"
+                    app:cornerRadius="26dp"
+                    app:backgroundTint="#DCE3EC"
+                    android:textColor="#1E2A3A"
+                    android:text="Previous photos" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCalendar"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="52dp"
+                    android:layout_marginEnd="6dp"
+                    app:cornerRadius="26dp"
+                    app:backgroundTint="#DCE3EC"
+                    android:textColor="#1E2A3A"
+                    android:text="Calendar" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnMyEvents"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="6dp"
+                    app:cornerRadius="26dp"
+                    app:backgroundTint="#DCE3EC"
+                    android:textColor="#1E2A3A"
+                    android:text="My Events" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnNowPlaying"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="52dp"
+                    android:layout_marginEnd="6dp"
+                    app:cornerRadius="26dp"
+                    app:backgroundTint="#DCE3EC"
+                    android:textColor="#1E2A3A"
+                    android:text="Now Playing" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnNowPlayingStyle"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="6dp"
+                    android:textSize="13sp"
+                    app:cornerRadius="26dp"
+                    app:strokeColor="#8A97A8"
+                    android:textColor="#4B5A6E"
+                    android:text="Style" />
+
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnScanConnect"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginTop="20dp"
+                android:textSize="13sp"
+                app:cornerRadius="22dp"
+                app:strokeColor="#8A97A8"
+                android:textColor="#4B5A6E"
+                android:text="Scan &amp; Connect" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSend"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="24dp"
+                app:cornerRadius="26dp"
+                app:backgroundTint="#2E6E82"
+                android:textColor="#FFFFFF"
+                android:text="Send" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnClearDisplay"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="12dp"
+                app:cornerRadius="26dp"
+                app:strokeColor="#2E6E82"
+                android:textColor="#2E6E82"
+                android:text="Clear Display" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
